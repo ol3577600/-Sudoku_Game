@@ -1,24 +1,24 @@
 #define SIZE 4 
 #include <vector>
-// 10227150 ¥Õµq¤¸ 10227135 ªô¥@øÊ 
+
 using namespace std;
 
 class SudokuGen
 {
     public:
         SudokuGen();
-        void generator(); //¶Ã¼Æªk²£¥Í·s´Ñ½L (ªì©l¤Æ®É«Øºc¤l´N·|©I¥s¤@¦¸)
-        vector<int > get_board(); //¿é¥X´Ñ½L¦ÜvectorÅÜ¼Æ
-        bool check_rep(vector<int>,int,int); //°»´ú¶ñ¤J¼Æ¦r¬O§_­«½Æ¡B²Å¦X³W«h¡A¤£²Å¦X·|¦^¶Çfalse­È
-        bool board_put(vector<int>&); //¶ñ¤J¼Æ¦r¨ç¦¡¡A¹Á¸Õ¥¢±Ñ¶W¹L1000¦¸·|¦^¶Çfalse­È
-        void board_dig(vector<int>,int); //«õ¬}¨ç¦¡
-        void copy_board(); //½Æ»s´Ñ½L¨ç¦¡
-        vector < vector <int> > All_board ; // ©Ò¦³´Ñ½L
+        void generator(); //äº‚æ•¸æ³•ç”¢ç”Ÿæ–°æ£‹ç›¤ (åˆå§‹åŒ–æ™‚å»ºæ§‹å­å°±æœƒå‘¼å«ä¸€æ¬¡)
+        vector<int > get_board(); //è¼¸å‡ºæ£‹ç›¤è‡³vectorè®Šæ•¸
+        bool check_rep(vector<int>,int,int); //åµæ¸¬å¡«å…¥æ•¸å­—æ˜¯å¦é‡è¤‡ã€ç¬¦åˆè¦å‰‡ï¼Œä¸ç¬¦åˆæœƒå›å‚³falseå€¼
+        bool board_put(vector<int>&); //å¡«å…¥æ•¸å­—å‡½å¼ï¼Œå˜—è©¦å¤±æ•—è¶…é1000æ¬¡æœƒå›å‚³falseå€¼
+        void board_dig(vector<int>,int); //æŒ–æ´å‡½å¼
+        void copy_board(); //è¤‡è£½æ£‹ç›¤å‡½å¼
+        vector < vector <int> > All_board ; // æ‰€æœ‰æ£‹ç›¤
 		vector < vector <int> > All_board_ANS ; 
     private:
-        int new_board[SIZE][SIZE]; //´Ñ½L
-        int i,j,k,l,a,s; //°j°é¥ÎÅÜ¼Æ
-        int in_board[SIZE][SIZE]; //¿é¤J´Ñ½L
-        int dig_board[SIZE][SIZE]; //¿é¥X´Ñ½L(«õ§¹¬})
-        int number_seres[SIZE*SIZE]; //¼Æ¦r§Ç¦C
+        int new_board[SIZE][SIZE]; //æ£‹ç›¤
+        int i,j,k,l,a,s; //è¿´åœˆç”¨è®Šæ•¸
+        int in_board[SIZE][SIZE]; //è¼¸å…¥æ£‹ç›¤
+        int dig_board[SIZE][SIZE]; //è¼¸å‡ºæ£‹ç›¤(æŒ–å®Œæ´)
+        int number_seres[SIZE*SIZE]; //æ•¸å­—åºåˆ—
 };
