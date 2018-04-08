@@ -3,36 +3,36 @@
 #include <cstdlib>
 #include <vector>
 #include <iostream>
-// 10227150 ¥Õµq¤¸ 10227135 ªô¥@øÊ 
+
 using namespace std;
 
-SudokuGen_nine::SudokuGen_nine() // «Øºc¤l(Constructor)
+SudokuGen_nine::SudokuGen_nine() // å»ºæ§‹å­(Constructor)
 {
-    srand(time(NULL)); //¥Hª«¥óªì©l¤Æ®É¶¡³]©w¬°¶Ã¼ÆºØ¤l
-    //generator(); //¥H¶Ã¼Æ¤èªk²£¥Í¼Æ¿W´Ñ½L
+    srand(time(NULL)); //ä»¥ç‰©ä»¶åˆå§‹åŒ–æ™‚é–“è¨­å®šç‚ºäº‚æ•¸ç¨®å­
+    //generator(); //ä»¥äº‚æ•¸æ–¹æ³•ç”¢ç”Ÿæ•¸ç¨æ£‹ç›¤
 }
 
-void SudokuGen_nine::generator() //¶Ã¼Æªk²£¥Í·s´Ñ½L
+void SudokuGen_nine::generator() //äº‚æ•¸æ³•ç”¢ç”Ÿæ–°æ£‹ç›¤
 {
-    int tmp; //¸m´«¥Î¼È¦sÅÜ¼Æ
-    int numtmp[9] = {1,2,3,4,5,6,7,8,9}; //4®c®æ¤ºªº¼Æ¦r
-    vector <int> board(81); //´Ñ½L
-    bool check = false; //ªí¥Ü´Ñ½L¬O§_¦¨¥\²£¥Í
+    int tmp; //ç½®æ›ç”¨æš«å­˜è®Šæ•¸
+    int numtmp[9] = {1,2,3,4,5,6,7,8,9}; //4å®®æ ¼å…§çš„æ•¸å­—
+    vector <int> board(81); //æ£‹ç›¤
+    bool check = false; //è¡¨ç¤ºæ£‹ç›¤æ˜¯å¦æˆåŠŸç”¢ç”Ÿ
 
-    for (i=0;i<81;i++){board[i] = 0;} //ªì©l¤Æ´Ñ½L(¶ñ¤J0)
+    for (i=0;i<81;i++){board[i] = 0;} //åˆå§‹åŒ–æ£‹ç›¤(å¡«å…¥0)
 
-    for (i=0;i<9;i++) //¥ı¶ñ¤J¥ª¤W¨¤4®c®æ
+    for (i=0;i<9;i++) //å…ˆå¡«å…¥å·¦ä¸Šè§’4å®®æ ¼
 //    1 2 
 //    3 4 
     {
         board[i/3*9+i%3] = numtmp[i];
     }
-    while(!check) //¤£Â_¹Á¸Õª½¨ì²Å¦X³W«hªº´Ñ½L²£¥Í
+    while(!check) //ä¸æ–·å˜—è©¦ç›´åˆ°ç¬¦åˆè¦å‰‡çš„æ£‹ç›¤ç”¢ç”Ÿ
     {
-//        ¶ñ¤J¼Æ¦r¨ç¦¡¡A¹Á¸Õ¥¢±Ñ¶W¹L1000¦¸·|¦^¶Çfalse­È
+//        å¡«å…¥æ•¸å­—å‡½å¼ï¼Œå˜—è©¦å¤±æ•—è¶…é1000æ¬¡æœƒå›å‚³falseå€¼
         check = board_put(board);
     }
-    for (i=0;i<9;i++) //±N1-4ªº¼Æ¦r¶¶§Ç¥´¶Ã
+    for (i=0;i<9;i++) //å°‡1-4çš„æ•¸å­—é †åºæ‰“äº‚
     {
         j = rand() % 9;
         tmp = numtmp[i];
@@ -40,22 +40,22 @@ void SudokuGen_nine::generator() //¶Ã¼Æªk²£¥Í·s´Ñ½L
         numtmp[j] = tmp;
     }
 
-    for(i=0;i<81;i++) //±N´Ñ½Lªº¼Æ¦r§Ç¸m´«¬°·s²£¥Íªº¼Æ¦r§Ç
+    for(i=0;i<81;i++) //å°‡æ£‹ç›¤çš„æ•¸å­—åºç½®æ›ç‚ºæ–°ç”¢ç”Ÿçš„æ•¸å­—åº
     {
         board[i] = numtmp[board[i]-1];
     }
     /*
-    for (i=0;i<SIZE;i++) //±Nµ²ªG¼g¤Jnew_boardÅÜ¼Æ
+    for (i=0;i<SIZE;i++) //å°‡çµæœå¯«å…¥new_boardè®Šæ•¸
         for (j=0;j<SIZE;j++)
         {
             new_board[i][j] = board[i*SIZE+j];
         }
     */
     All_board_ANS.push_back( board ) ; 
-    board_dig(board, 25) ; // «õ8­Ó¬} 
+    board_dig(board, 25) ; // æŒ–8å€‹æ´ 
 }
 
-vector <int > SudokuGen_nine::get_board() //¿é¥X´Ñ½L¦ÜvectorÅÜ¼Æ
+vector <int > SudokuGen_nine::get_board() //è¼¸å‡ºæ£‹ç›¤è‡³vectorè®Šæ•¸
 {
     vector < int > out_board (SIZE1*SIZE1);
     for (i=0;i<SIZE1;i++)
@@ -72,38 +72,38 @@ bool SudokuGen_nine::check_rep(vector<int> board,int pos,int n)
     int i;
     for (i=0;i<9;i++)
     {
-        if(board[pos/9*9+i]==n) //check¾î±Æ¤W¼Æ¦r¬O§_¦³­«½Æ
+        if(board[pos/9*9+i]==n) //checkæ©«æ’ä¸Šæ•¸å­—æ˜¯å¦æœ‰é‡è¤‡
         {
-            return true; //¦³­«½Æ¡A¦^¶Çtrue
+            return true; //æœ‰é‡è¤‡ï¼Œå›å‚³true
         }
-        if(board[i*9+pos%9]==n) //checkª½±Æ¤W¼Æ¦r¬O§_¦³­«½Æ
+        if(board[i*9+pos%9]==n) //checkç›´æ’ä¸Šæ•¸å­—æ˜¯å¦æœ‰é‡è¤‡
         {
-            return true; //¦³­«½Æ¡A¦^¶Çtrue
+            return true; //æœ‰é‡è¤‡ï¼Œå›å‚³true
         }
     }
-    return false;  //µL­«½Æ¡A¦^¶Çfalse
+    return false;  //ç„¡é‡è¤‡ï¼Œå›å‚³false
 }
 
-bool SudokuGen_nine::board_put(vector<int > &board) //¶ñ¤J¼Æ¦r¨ç¦¡
+bool SudokuGen_nine::board_put(vector<int > &board) //å¡«å…¥æ•¸å­—å‡½å¼
 {
     int pos;
-    int count1,count2; //­p¼Æ¾¹
-    bool check = true; //check¼Æ¦r¬O§_­«½Æ
+    int count1,count2; //è¨ˆæ•¸å™¨
+    bool check = true; //checkæ•¸å­—æ˜¯å¦é‡è¤‡
 
-    for (j=0;j<9;j++) //¶ñ¤Jªº¼Æ¦r1-4 (j+1ªºµ²ªG)
+    for (j=0;j<9;j++) //å¡«å…¥çš„æ•¸å­—1-4 (j+1çš„çµæœ)
     {
-        count2 = 0; //­pºâ³æ¤@¼Æ¦r¶ñ¤JÁ`¦@¹Á¸Õ¿ù»~¦¸¼Æ
-        for (i=1;i<9;i++) //¨Ì§Ç±N¼Æ¦r¶ñ¤J¨ä¾l3­Ó¤p¥|®c®æ(¥ª¤W¨¤¤w¸g²£¥Í)
+        count2 = 0; //è¨ˆç®—å–®ä¸€æ•¸å­—å¡«å…¥ç¸½å…±å˜—è©¦éŒ¯èª¤æ¬¡æ•¸
+        for (i=1;i<9;i++) //ä¾åºå°‡æ•¸å­—å¡«å…¥å…¶é¤˜3å€‹å°å››å®®æ ¼(å·¦ä¸Šè§’å·²ç¶“ç”¢ç”Ÿ)
         {
-            pos = i/3*27+i%3*3; //¨C­Ó¤p¥|®c®æªº°_©lindex
-            count1 = 0; //­pºâ³æ¤@¼Æ¦r¶ñ¤J¹Á¸Õ¿ù»~¦¸¼Æ
+            pos = i/3*27+i%3*3; //æ¯å€‹å°å››å®®æ ¼çš„èµ·å§‹index
+            count1 = 0; //è¨ˆç®—å–®ä¸€æ•¸å­—å¡«å…¥å˜—è©¦éŒ¯èª¤æ¬¡æ•¸
             while (check==true)
             {
                 k = rand() % 9;
                 check = check_rep(board,pos+k/3*9+k%3,j+1);
                 ++count1;
                 ++count2;
-                if (board[pos+k/3*9+k%3]==0 && check==false) //¼Æ¦r¨S¦³­«½Æ¡A¦¨¥\¶ñ¤Jµ²§ôwhile loop
+                if (board[pos+k/3*9+k%3]==0 && check==false) //æ•¸å­—æ²’æœ‰é‡è¤‡ï¼ŒæˆåŠŸå¡«å…¥çµæŸwhile loop
                 {
                     board[pos+k/3*9+k%3] = j+1;
                     check = true;
@@ -113,7 +113,7 @@ bool SudokuGen_nine::board_put(vector<int > &board) //¶ñ¤J¼Æ¦r¨ç¦¡
                 {
                     check = true;
                 }
-                if (count1 > 100) // ¿ù»~¶W¹L100¦¸¡A¼Æ¦r­«¶ñ
+                if (count1 > 100) // éŒ¯èª¤è¶…é100æ¬¡ï¼Œæ•¸å­—é‡å¡«
                 {
                     for (l=0;l<81;l++)
                     {
@@ -126,32 +126,32 @@ bool SudokuGen_nine::board_put(vector<int > &board) //¶ñ¤J¼Æ¦r¨ç¦¡
                     i = 0;
                     break;
                 }
-                if (count2 > 1000) // ¿ù»~¶W¹L1000¦¸¡A¦^¶Çfalse¨Ãµ²§ô¨ç¦¡
+                if (count2 > 1000) // éŒ¯èª¤è¶…é1000æ¬¡ï¼Œå›å‚³falseä¸¦çµæŸå‡½å¼
                 {
                     return false;
                 }
             }
         }
     }
-    return true; //¦¨¥\¶ñº¡´Ñ½L¡A¦^¶Çtrue
+    return true; //æˆåŠŸå¡«æ»¿æ£‹ç›¤ï¼Œå›å‚³true
 }
 
 void SudokuGen_nine::board_dig(vector < int > board, int n_hole)
 {   
-    for (a=0;a<SIZE1*SIZE1;a++) //«Ø¥ß0¨ì15ªº¼Æ¦r§Ç¦C
+    for (a=0;a<SIZE1*SIZE1;a++) //å»ºç«‹0åˆ°15çš„æ•¸å­—åºåˆ—
     {
         number_seres[a] = a;
     }
-    for (a=0;a<SIZE1;a++)//±N¿é¤Jªº¼Æ¿WÃD¥Ø¼g¤J¦Üin_boardÅÜ¼Æ
+    for (a=0;a<SIZE1;a++)//å°‡è¼¸å…¥çš„æ•¸ç¨é¡Œç›®å¯«å…¥è‡³in_boardè®Šæ•¸
         for (s=0;s<SIZE1;s++)
         {
             in_board[a][s] = board[a*SIZE1+s];
 
         }
 	 
-    int temp; //¸m´«¥Î¼È¦sÅÜ¼Æ
-    copy_board(); //©I¥s½Æ»s¨ç¼Æ
-    for (a=0;a<81;a++) //±N¼Æ¦r§Ç¦C¥´¶Ã
+    int temp; //ç½®æ›ç”¨æš«å­˜è®Šæ•¸
+    copy_board(); //å‘¼å«è¤‡è£½å‡½æ•¸
+    for (a=0;a<81;a++) //å°‡æ•¸å­—åºåˆ—æ‰“äº‚
     {
         s = rand()%81;
         temp = number_seres[a];
@@ -166,7 +166,7 @@ void SudokuGen_nine::board_dig(vector < int > board, int n_hole)
 
 void SudokuGen_nine::copy_board()
 /*
-½Æ»s´Ñ½L¨ç¦¡
+è¤‡è£½æ£‹ç›¤å‡½å¼
 copy in_board into dig_board
 */
 {
