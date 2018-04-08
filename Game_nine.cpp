@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <vector>
 #include <iostream>
-// 10227150 ¥Õµq¤¸ 10227135 ªô¥@øÊ 
+
 using namespace std;
 
 void Game_nine::test( vector < int > board, vector < int > board_ans ) 
@@ -15,17 +15,17 @@ void Game_nine::test( vector < int > board, vector < int > board_ans )
        if ((i+1) % 9 == 0) input << "\n";
     }
     input << "\n", input.close();
-	cout <<endl << "[ÃD¥Ø¥H¿é¥X¦Ütest.txt" << endl << "½Ğ±N0§ó§ï¬°µª®×«áÀx¦s" << endl << "Àx¦s§¹«á«ö¨â¦¸enterÁä]"<<endl<<endl;               	  	
+	cout <<endl << "[é¡Œç›®ä»¥è¼¸å‡ºè‡³test.txt" << endl << "è«‹å°‡0æ›´æ”¹ç‚ºç­”æ¡ˆå¾Œå„²å­˜" << endl << "å„²å­˜å®Œå¾ŒæŒ‰å…©æ¬¡enteréµ]"<<endl<<endl;               	  	
     system("pause"), system("pause");
     input.open("test.txt",ios::in);
 	for(int i=0;i<81;i++) 
         input >> get, ansboard[i] = get ; 
     input.close();
-	cout << "[³o¬O§Aªºµª®×~]" << endl ;
+	cout << "[é€™æ˜¯ä½ çš„ç­”æ¡ˆ~]" << endl ;
 	print_board(ansboard) ; 
 	
-	if ( Check_equal(ansboard, board_ans) ) cout << "[µª®×¥¿½T!!]" << endl ;
-	else cout << "[µª®×¿ù»~!!]" << endl ;
+	if ( Check_equal(ansboard, board_ans) ) cout << "[ç­”æ¡ˆæ­£ç¢º!!]" << endl ;
+	else cout << "[ç­”æ¡ˆéŒ¯èª¤!!]" << endl ;
 }
 
 bool Game_nine::Check_equal(vector <int > one, vector <int > two) {
@@ -35,7 +35,7 @@ bool Game_nine::Check_equal(vector <int > one, vector <int > two) {
 	return true ;
 }
 
-void Game_nine::print_board(vector <int > board) //±N´Ñ½L¦L¥X
+void Game_nine::print_board(vector <int > board) //å°‡æ£‹ç›¤å°å‡º
 {
     for (int i=0;i<board.size();i++)
     {
