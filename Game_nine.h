@@ -1,7 +1,7 @@
 #define SIZE1 9 
 #include <vector>
 #include <fstream>
-// 10227150 ¥Õµq¤¸ 10227135 ªô¥@øÊ 
+
 using namespace std;
 
 class Game_nine
